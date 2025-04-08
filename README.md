@@ -1,5 +1,5 @@
-![CI](https://github.com/PVLKorobov/NT_JS3_1/actions/workflows/web.yml/badge.svg)
+![CI](https://github.com/PVLKorobov/NT_JS3_3-1/actions/workflows/web.yml/badge.svg)
 
-# Домашнее задание к занятию "2. DOM"
+# Домашнее задание к занятию "3.Обработка событий"
 
-## Задача 1, Перемещение элемента
+## Задача 1, Игра с гоблинами
