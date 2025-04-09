@@ -7,11 +7,17 @@ import { GridGame } from "./game";
 beforeAll(() => {
   document.body.innerHTML = `
   <div class="contents__wrapper">
-    <div class="grid__wrapper"></div>
+    <div class="game__wrapper">
+      <div class="grid__wrapper"></div>
+      <div class="counters__wrapper">
+        <p class="successful-counter"></p>
+        <p class="missed-counter"></p>
+      </div>
+    </div>
   </div>
   `;
-  window.gridWrapper = document.querySelector(".grid__wrapper");
-  window.game = new GridGame(window.gridWrapper);
+  const gameWrapper = document.querySelector(".game__wrapper");
+  window.game = new GridGame(gameWrapper);
 
   window.game.generateGrid();
 });
@@ -25,7 +31,7 @@ describe("Тест перемещения img", () => {
   ])(`Moving to $x-$y`, ({ x, y }) => {
     window.game.currentPos = { x: x, y: y };
     window.game.moveImgToCurrentPos();
-    const targetImage = window.gridWrapper.querySelector(
+    const targetImage = window.game.gridWrapper.querySelector(
       `.grid__slot__${x}-${y} .target__img`,
     );
     expect(targetImage).not.toBeNull();

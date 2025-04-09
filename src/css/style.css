@@ -7,6 +7,14 @@ body {
     justify-content: center;
 }
 
+.game__wrapper {
+    display: flex;
+}
+
+.counters__wrapper {
+    margin-left: 300px;
+}
+
 .grid__wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -22,4 +30,12 @@ body {
     border-radius: 100px;
     width: 200px;
     height: 200px;
+}
+
+.counters__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
