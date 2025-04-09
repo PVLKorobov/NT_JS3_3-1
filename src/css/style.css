@@ -1,5 +1,6 @@
 body {
     color: #999;
+    margin: 0px;
 }
 
 .contents__wrapper {
@@ -26,10 +27,19 @@ body {
 .grid__slot {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: #999;
     border-radius: 100px;
     width: 200px;
     height: 200px;
+}
+
+.target__img {
+    height: 100%;
+}
+
+.target__img:hover {
+    cursor:  url('../img/hammer.png'), pointer;
 }
 
 .counters__wrapper {
@@ -38,4 +48,22 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-size: 40px;
+}
+
+.message-modal__wrapper {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(43, 43, 43, 0.95);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.message-modal__contents {
+    font-size: 100px;
+    color: red;
 }

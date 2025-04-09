@@ -10,6 +10,7 @@ class GridGame {
       this.successfulClick();
     });
 
+    this.gameWrapper = gameWrapper;
     this.gridWrapper = gameWrapper.querySelector(".grid__wrapper");
 
     this.missedCount = 0;
@@ -21,7 +22,7 @@ class GridGame {
       ".counters__wrapper .missed-counter",
     );
 
-    this.gameCycleInterval = null;
+    this.gameCycleIntervalID = null;
     this.currentPos = { x: null, y: null };
     this.gridSize = { x: 4, y: 4 };
   }
@@ -57,6 +58,10 @@ class GridGame {
 
   raiseMissedCounter() {
     this.missedCount += 1;
+    if (this.missedCount >= 5) {
+      this.stopGame();
+      this.showMessageModal();
+    }
     this.missedCounter.innerHTML = this.missedCount;
   }
 
@@ -79,10 +84,16 @@ class GridGame {
   }
 
   startGame() {
-    this.gameCycleInterval = setInterval(() => {
+    this.moveTarget();
+    this.gameCycleIntervalID = window.setInterval(() => {
       this.moveTarget();
       this.raiseMissedCounter();
     }, 1000);
+  }
+
+  stopGame() {
+    window.clearInterval(this.gameCycleIntervalID);
+    this.gameCycleIntervalID = null;
   }
 
   restartGameCycle() {
@@ -90,9 +101,15 @@ class GridGame {
     this.startGame();
   }
 
-  stopGame() {
-    clearInterval(this.gameCycleInterval);
-    this.gameCycleInterval = null;
+  resetStats() {
+    this.missedCount = 0;
+    this.successfulCount = 0;
+    this.missedCounter.innerHTML = 0;
+    this.successfulCounter.innerHTML = 0;
+  }
+
+  showMessageModal() {
+    document.querySelector(".message-modal__wrapper").style.display = "flex";
   }
 }
 
