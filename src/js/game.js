@@ -53,6 +53,10 @@ class GridGame {
 
   raiseSuccessfulCounter() {
     this.successfulCount += 1;
+    if (this.successfulCount >= 10) {
+      this.stopGame();
+      this.showWinMessage();
+    }
     this.successfulCounter.innerHTML = this.successfulCount;
   }
 
@@ -60,7 +64,7 @@ class GridGame {
     this.missedCount += 1;
     if (this.missedCount >= 5) {
       this.stopGame();
-      this.showMessageModal();
+      this.showLoseMessage();
     }
     this.missedCounter.innerHTML = this.missedCount;
   }
@@ -108,8 +112,25 @@ class GridGame {
     this.successfulCounter.innerHTML = 0;
   }
 
-  showMessageModal() {
-    document.querySelector(".message-modal__wrapper").style.display = "flex";
+  showWinMessage() {
+    const modalWrapper = document.querySelector(".message-modal__wrapper");
+    const modalContents = modalWrapper.querySelector(
+      ".message-modal__contents",
+    );
+
+    modalContents.style.color = "greenyellow";
+    modalContents.innerHTML = "WIN";
+    modalWrapper.style.display = "flex";
+  }
+  showLoseMessage() {
+    const modalWrapper = document.querySelector(".message-modal__wrapper");
+    const modalContents = modalWrapper.querySelector(
+      ".message-modal__contents",
+    );
+
+    modalContents.style.color = "red";
+    modalContents.innerHTML = "GAME OVER";
+    modalWrapper.style.display = "flex";
   }
 }
 

@@ -63,7 +63,14 @@ body {
     top: 0;
 }
 
+.good-text {
+    color: red;
+}
+
+.bad-text {
+    color: greenyellow;
+}
+
 .message-modal__contents {
     font-size: 100px;
-    color: red;
 }

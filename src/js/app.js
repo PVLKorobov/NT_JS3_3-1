@@ -9,7 +9,15 @@ window.addEventListener("DOMContentLoaded", () => {
   document
     .querySelector(".message-modal__wrapper")
     .addEventListener("click", () => {
-      document.querySelector(".message-modal__wrapper").style.display = "none";
+      const modalWrapper = document.querySelector(".message-modal__wrapper");
+      const modalContents = modalWrapper.querySelector(
+        ".message-modal__contents",
+      );
+
+      modalWrapper.style.display = "none";
+      modalContents.innerHTML = "";
+      modalContents.style.removeProperty("color");
+
       window.game.resetStats();
       window.game.startGame();
     });
